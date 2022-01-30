@@ -1,5 +1,0 @@
-# ninja log v5
-4	2382	6651096073725462	CMakeFiles/Leetcode.dir/main.cpp.obj	8266df9469c03a42
-10	3106	6650815051027312	CMakeFiles/Leetcode.dir/2131._Longest_Palindrome_by_Concatenating_Two_Letter_Words.cpp.obj	f5f4ca44a686a58f
-2383	2543	6651096075220841	Leetcode.exe	32c18a811db724a7
-1	249	6652491279473349	build.ninja	6313108df04ac374
