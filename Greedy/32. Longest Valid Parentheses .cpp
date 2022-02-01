@@ -9,16 +9,17 @@ class Solution {
 public:
     int longestValidParentheses(string s) {
         int res = 0;
-        vector<int> stack(1, -1);
+        stack<int> st;
+        st.push(-1);
         for (int i = 0; i < s.size(); ++i) {
             if (s[i] == '(')
-                stack.emplace_back(i);
+                st.push(i);
             else {
-                stack.pop_back();
-                if (stack.empty())
-                    stack.emplace_back(i);
+                st.pop();
+                if (st.empty())
+                    st.push(i);
                 else
-                    res = max(res, i - stack.back());
+                    res = max(res, i - st.top());
             }
         }
         return res;
