@@ -1,5 +1,5 @@
 //
-// Created by Cauchy on 2022/1/30.
+// Created by Cauchy on 2022/2/2.
 //
 #include <bits/stdc++.h>
 
@@ -46,16 +46,17 @@ public:
         }
 
         if (s[i] != '(' && s[i] != ')')
-            dfs(s, i+1, curStr+s.substr(i,1), count);
+            dfs(s, i + 1, curStr + s.substr(i, 1), count);
         else {
-            dfs(s, i+1, curStr+s.substr(i,1), count+(s[i] == '('?1:-1));
+            dfs(s, i + 1, curStr + s.substr(i, 1), count + (s[i] == '(' ? 1 : -1));
             if (curStr.empty() || s[i] != curStr.back())
-                dfs(s, i+1, curStr, count);
+                dfs(s, i + 1, curStr, count);
         }
     }
 };
-int main() {
-    Solution solution;
-    string s = "(a)())()";
-    vector<string> ans = solution.removeInvalidParentheses(s);
-}
+// Searching in an array
+//1.  if s[i] != curStr.back()
+//    curStr -> curStr+s[i]
+//
+//2.  if s[i] == curStr.back()
+//    curStr -> curStr+s[i]
