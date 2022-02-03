@@ -1,6 +1,7 @@
 //
-// Created by Cauchy on 2022/1/30.
+// Created by Cauchy on 2022/2/4.
 //
+
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -44,8 +45,3 @@ public:
         return {};
     }
 };
-int main() {
-    Solution solution;
-    vector<int>  s = {2,6,10,4,8,12};
-    solution.recoverArray(s);
-}
