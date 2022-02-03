@@ -1,10 +1,8 @@
 //
-// Created by Cauchy on 2022/1/30.
+// Created by Cauchy on 2022/2/4.
 //
 #include <bits/stdc++.h>
-
 using namespace std;
-
 class Solution {
 public:
     vector<int> findOriginalArray(vector<int>& changed) {
@@ -23,8 +21,3 @@ public:
         return ans;
     }
 };
-int main() {
-    Solution solution;
-    vector<int>  s = {1,3,4,2,6,8};
-    solution.findOriginalArray(s);
-}
