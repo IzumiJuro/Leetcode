@@ -1,5 +1,5 @@
 //
-// Created by Cauchy on 2022/1/30.
+// Created by Cauchy on 2022/2/5.
 //
 #include <bits/stdc++.h>
 
@@ -48,10 +48,3 @@ public:
         return ans;
     }
 };
-int main() {
-    Solution solution;
-    vector<int> a = {1, 7};
-    vector<int> b = {3, 4};
-    int target = 10;
-    solution.closestCost(a, b, target);
-}
