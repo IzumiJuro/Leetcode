@@ -11,7 +11,7 @@ void GospersHack(int k, int n) {
          */
         int lb = cur & -cur;
         int r = cur + lb;
-        cur = ((r ^ cur) >> __builtin_ctz(lb) + 2) | r;
-        // 或者 cur = ((r ^ cur) >> 2 / lb) | r;
+        cur = (((r ^ cur) >> __builtin_ctz(lb)) + 2) | r;
+        // 或者 cur = (((r ^ cur) >> 2) / lb) | r;
     }
 }
