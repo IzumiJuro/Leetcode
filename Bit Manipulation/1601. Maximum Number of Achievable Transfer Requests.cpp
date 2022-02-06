@@ -35,8 +35,8 @@ public:
         fill(buildings.begin(), buildings.end(), 0);
         for (int i = 0; i < m; i++) {
             if (((s >> i) & 1) == 1) {
-                buildings[requests[i][0]]++;
-                buildings[requests[i][1]]--;
+                buildings[requests[i][0]]--;
+                buildings[requests[i][1]]++;
             }
         }
         int flag = 1;

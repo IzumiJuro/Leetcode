@@ -6,40 +6,57 @@
 using namespace std;
 
 class Solution {
+    vector<int> buildings;
 public:
-    vector<int> peopleIndexes(vector<vector<string>> &favoriteCompanies) {
-        int n = favoriteCompanies.size();
-        unordered_map<string, bitset<100>> Map;
-        for (int i = 0; i < n; i++) {
-            bitset<100> bs;
-            bs.set(i);
-            for (auto &c: favoriteCompanies[i]) {
-                Map[c] |= bs;
-            }
-        }
+    int maximumRequests(int n, vector<vector<int>> &requests) {
+        int m = requests.size();
+        buildings.resize(n);
 
-        vector<int> res;
-        for (int i = 0; i < n; i++) {
-            bitset<100> bs;
-            bs.set();
-            for (auto &c: favoriteCompanies[i]) {
-                bs &= Map[c];
+        for (int k = m; k >= 1; k--) {
+            int cur = (1 << k) - 1;
+            int limit = (1 << m);
+            while (cur < limit) {
+                /**
+                 *  do something
+                 */
+                if (check(cur, n, requests))
+                    return k;
+                int lb = cur & -cur;
+                int r = cur + lb;
+                cur = ((r ^ cur) >> (__builtin_ctz(lb) + 2)) | r;
+                // 或者 cur = ((r ^ cur) >> 2 / lb) | r;
             }
-            if (bs.count() == 1)
-                res.emplace_back(i);
         }
-        return res;
+        return 0;
+    }
+
+    bool check(int s, int n, vector<vector<int>> &requests) {
+        int m = requests.size();
+        fill(buildings.begin(), buildings.end(), 0);
+        for (int i = 0; i < m; i++) {
+            if (((s >> i) & 1) == 1) {
+                buildings[requests[i][0]]++;
+                buildings[requests[i][1]]--;
+            }
+        }
+        int flag = 1;
+        for (int i = 0; i < n; i++) {
+            if (buildings[i] != 0) {
+                flag = 0;
+                break;
+            }
+        }
+        return flag;
     }
 };
 
 int main() {
     Solution solution;
-    vector<vector<string>> a{
-            {"leetcode", "google", "facebook"},
-            {"google",   "microsoft"},
-            {"google",   "facebook"},
-            {"google"},
-            {"amazon"}
-    };
-    solution.peopleIndexes(a);
+    vector<vector<int>> requests = {{0, 1},
+                                    {1, 0},
+                                    {0, 1},
+                                    {1, 2},
+                                    {2, 0},
+                                    {3, 4}};
+    solution.maximumRequests(5, requests);
 }
