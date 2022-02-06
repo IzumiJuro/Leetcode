@@ -1,6 +1,7 @@
 //
-// Created by Cauchy on 2022/1/30.
+// Created by Cauchy on 2022/2/6.
 //
+
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -31,15 +32,3 @@ public:
         return res;
     }
 };
-
-int main() {
-    Solution solution;
-    vector<vector<string>> a{
-            {"leetcode", "google", "facebook"},
-            {"google",   "microsoft"},
-            {"google",   "facebook"},
-            {"google"},
-            {"amazon"}
-    };
-    solution.peopleIndexes(a);
-}
