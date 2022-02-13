@@ -1,11 +1,11 @@
 //
-// Created by Cauchy on 2022/1/30.
+// Created by Cauchy on 2022/2/13.
 //
 #include <bits/stdc++.h>
 
 using namespace std;
 
-class Leetcode {
+class Solution {
     vector<int> Father;
 public:
     string smallestStringWithSwaps(string s, vector<vector<int>> &pairs) {
@@ -23,7 +23,7 @@ public:
 
         unordered_map<int, vector<int>> Map;
         for (int i = 0; i < n; i++) {
-            Map[Father[i]].emplace_back(i);
+            Map[FindSet(i)].emplace_back(i);
         }
 
         for (auto x: Map) {
@@ -52,18 +52,9 @@ public:
         x = Father[x];
         y = Father[y];
         if (x <= y)
-            y = Father[x];
+            Father[x] = y;
         else
-            x = Father[y];
+            Father[y] = x;
     }
 
 };
-
-int main() {
-    Leetcode solution;
-    vector<vector<int>> requests = {{0, 3},
-                                    {1, 2},
-                                    {0, 2},
-    };
-    solution.smallestStringWithSwaps("dcab", requests);
-}
