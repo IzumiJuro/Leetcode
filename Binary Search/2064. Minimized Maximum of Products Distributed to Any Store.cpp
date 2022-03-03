@@ -1,6 +1,3 @@
-//
-// Created by Cauchy on 2022/1/30.
-//
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -12,7 +9,7 @@ public:
         int right = INT_MAX / 2;
         while (left < right) {
             int mid = left + (right - left) / 2;
-            if (checkOk(n, quantities, mid))
+            if (checkOk(n, quantities, mid)) 
                 right = mid;
             else
                 left = mid + 1;
@@ -28,12 +25,6 @@ public:
             else
                 count += x / limit + 1;
         }
-        return n >= count;
+        return n >= count;      
     }
 };
-
-int main() {
-    Solution solution;
-    vector<int> quantities{15,10,10};
-    solution.minimizedMaximum(7, quantities);
-}
